@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#6d5dfc">
+<meta name="description" content="ToolNest — powerful free online tools for calculations, text, developer utilities, image tools and everyday tasks.">
+<meta name="keywords" content="ToolNest, online tools, free calculator, age calculator, GST calculator, EMI calculator, JSON formatter, image compressor, password generator">
+<meta name="author" content="ALFAIZ ANSARI">
+<meta name="robots" content="index,follow">
+<title>ToolNest — All Tools. One Place.</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--soft:#f0f2ff;--text:#111827;--muted:#697386;--line:#e5e7eb;--p:#6d5dfc;--p2:#8b5cf6;--cyan:#06b6d4;--green:#10b981;--red:#ef4444;--shadow:0 18px 55px rgba(31,41,55,.08);--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+body.dark{--bg:#080b14;--card:#111827;--soft:#171b2c;--text:#f9fafb;--muted:#9ca3af;--line:#253047;--shadow:0 20px 70px rgba(0,0,0,.3)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.container{max-width:1240px;margin:auto;padding:0 20px}
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navin{height:70px;display:flex;align-items:center;gap:18px;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:21px}
+.logoMark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--p),var(--p2),var(--cyan));box-shadow:0 10px 25px #6d5dfc44}
+.links{display:flex;gap:23px;align-items:center}
+.links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:700}
+.links a:hover{color:var(--p)}
+.actions{display:flex;gap:8px}
+.ico{width:42px;height:42px;border:1px solid var(--line);border-radius:13px;background:var(--card);color:var(--text)}
+.menu{display:block;font-size:22px}
+.hero{position:relative;padding:84px 0 45px;text-align:center;overflow:hidden}
+.glow{position:absolute;width:430px;height:430px;border-radius:50%;background:#6d5dfc2b;filter:blur(95px);left:50%;top:10px;transform:translateX(-50%);pointer-events:none}
+.badge{position:relative;display:inline-flex;gap:8px;align-items:center;background:#6d5dfc14;color:var(--p);border:1px solid #6d5dfc25;padding:8px 14px;border-radius:999px;font-weight:800;font-size:13px}
+.hero h1{position:relative;font-size:clamp(42px,7vw,76px);line-height:1.02;letter-spacing:-3.5px;margin:18px auto;max-width:900px}
+.grad{background:linear-gradient(90deg,#6d5dfc,#8b5cf6,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{position:relative;color:var(--muted);max-width:700px;margin:0 auto 28px;font-size:17px}
+.search{max-width:720px;margin:auto;position:relative}
+.search input{width:100%;height:58px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:18px;padding:0 52px 0 20px;outline:none;box-shadow:var(--shadow)}
+.search span{position:absolute;right:19px;top:16px;color:var(--muted)}
+.quick{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:15px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:7px 12px;border-radius:999px;font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-bottom:55px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:19px;text-align:center}
+.stat b{font-size:25px;color:var(--p);display:block}
+.stat span{color:var(--muted);font-size:12px}
+.section{padding:42px 0}
+.head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px}
+.head h2{font-size:29px;letter-spacing:-1px}
+.head p{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);transition:.22s;position:relative}
+.card:hover{transform:translateY(-5px);border-color:#6d5dfc55}
+.toolIcon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:var(--soft);font-size:23px;margin-bottom:15px}
+.card h3{font-size:16px;margin-bottom:4px}
+.card p{font-size:12px;color:var(--muted)}
+.fav{position:absolute;right:14px;top:14px;border:0;background:transparent;color:#9ca3af;font-size:20px}
+.fav.on{color:#f59e0b}
+.catgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:19px;cursor:pointer}
+.cat:hover{border-color:#6d5dfc55}
+.cat b{display:block;margin-top:8px;font-size:13px}
+.cat span{font-size:11px;color:var(--muted)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.feature i{font-style:normal;font-size:27px}
+.feature h3{margin:10px 0 5px}
+.feature p{font-size:13px;color:var(--muted)}
+.footer{border-top:1px solid var(--line);margin-top:45px;padding:38px 0 25px}
+.footgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+.footgrid h4{margin-bottom:10px}
+.footgrid a{display:block;color:var(--muted);text-decoration:none;font-size:13px;margin:7px 0}
+.copy{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;background:#0009;backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:16px;z-index:3000}
+.modal.show{display:flex}
+.box{width:min(700px,100%);max-height:91vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:25px;padding:26px;position:relative}
+.close{position:absolute;right:15px;top:15px;width:38px;height:38px;border:0;border-radius:12px;background:var(--soft);color:var(--text);font-size:20px}
+.box h2{padding-right:45px;margin-bottom:5px}
+.desc{color:var(--muted);font-size:13px;margin-bottom:18px}
+.field{margin:12px 0}
+.field label{font-size:12px;font-weight:800;display:block;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:13px;padding:12px 13px;outline:none}
+.field textarea{min-height:150px;resize:vertical}
+.btn{border:0;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;padding:12px 16px;border-radius:13px;font-weight:800;width:100%}
+.btn2{border:1px solid var(--line);background:var(--card);color:var(--text);padding:10px 13px;border-radius:12px;font-weight:700}
+.row{display:flex;gap:9px;flex-wrap:wrap}
+.row>*{flex:1}
+.result{display:none;margin-top:14px;padding:15px;border-radius:14px;background:var(--soft);border:1px solid #6d5dfc2b}
+.result.show{display:block}
+.result strong{color:var(--p)}
+.notice{padding:12px 14px;background:#f59e0b12;border:1px solid #f59e0b33;border-radius:13px;color:var(--muted);font-size:12px;margin-bottom:14px}
+pre{white-space:pre-wrap;word-break:break-word;background:#0b1020;color:#d7defa;padding:15px;border-radius:14px;overflow:auto;font-size:12px}
+canvas{max-width:100%}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#111827;color:#fff;padding:11px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:5000;font-size:13px}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted)}
+.policy p,.policy li{font-size:13px;color:var(--muted);margin:8px 0}
+.policy h3{margin:18px 0 6px}
+
+.calcPro{background:linear-gradient(145deg,#0d1224,#151b35);padding:16px;border-radius:22px;color:#fff;box-shadow:inset 0 0 0 1px #ffffff12}
+.calcTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.calcLabel{font-size:10px;letter-spacing:1.5px;color:#aeb7d8;font-weight:900}.calcMini{font-size:11px;color:#7dd3fc;margin-top:3px}
+.calcScreen{background:#080c18;border:1px solid #ffffff12;border-radius:17px;padding:12px;text-align:right;margin-bottom:9px;min-height:112px}.calcHistory{height:20px;color:#6f7b9c;font-size:11px}.calcScreen input{width:100%;border:0;background:transparent;color:#eef2ff;text-align:right;font-size:28px;outline:0;padding:5px}.calcAns{font-size:14px;color:#a5b4fc;min-height:20px}.calcMemory{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:8px}.calcMemory button{border:0;border-radius:10px;background:#ffffff0d;color:#aeb7d8;padding:8px;font-size:11px}.calcKeys{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.calcKeys button{height:52px;border:0;border-radius:13px;background:#ffffff0d;color:#f8fafc;font-weight:800;font-size:15px}.calcKeys button:hover{background:#6d5dfc55}.calcKeys button:nth-child(-n+8){color:#a5b4fc;background:#ffffff08}.calcKeys .eq{background:linear-gradient(135deg,#6d5dfc,#8b5cf6);color:#fff}
+.gamegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.game{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;cursor:pointer;box-shadow:var(--shadow);transition:.2s}.game:hover{transform:translateY(-4px)}.gameIcon{font-size:35px;margin-bottom:10px}.game h3{font-size:15px}.game p{font-size:12px;color:var(--muted);margin-top:3px}
+.gameBoard{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:320px;margin:15px auto}.gameCell{height:90px;border:1px solid var(--line);border-radius:14px;background:var(--soft);color:var(--text);font-size:32px;font-weight:900}.gameStats{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:10px}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.catgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.links{display:none}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.footgrid{grid-template-columns:1fr 1fr}.hero{padding-top:65px}}
+@media(max-width:470px){.hero h1{font-size:43px;letter-spacing:-2px}.grid{grid-template-columns:1fr}.catgrid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.footgrid{grid-template-columns:1fr}}
+
+.feedbackFloat{
+  position:fixed;right:18px;bottom:18px;z-index:999;
+  border:0;border-radius:999px;padding:13px 18px;
+  color:#fff;font-weight:800;cursor:pointer;
+  background:linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4);
+  box-shadow:0 12px 30px rgba(37,99,235,.30);
+  transition:.2s;
+}
+.feedbackFloat:hover{transform:translateY(-3px);box-shadow:0 16px 35px rgba(37,99,235,.38)}
+.feedbackBox{max-width:560px}
+.feedbackStars{display:flex;justify-content:center;gap:6px;margin:18px 0 12px}
+.feedbackStars button{
+  background:transparent;border:0;font-size:36px;line-height:1;
+  color:#cbd5e1;cursor:pointer;transition:.15s;
+}
+.feedbackStars button.active,.feedbackStars button:hover{color:#f59e0b;transform:scale(1.08)}
+.feedbackChoices{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0}
+.feedbackChoices button{
+  padding:11px;border:1px solid var(--border);border-radius:12px;
+  background:var(--card);color:var(--text);cursor:pointer;font-weight:700;
+}
+.feedbackChoices button.active{border-color:#6366f1;background:rgba(99,102,241,.10)}
+.feedbackText,.feedbackInput{
+  width:100%;box-sizing:border-box;border:1px solid var(--border);
+  border-radius:13px;background:var(--input,#fff);color:var(--text);
+  padding:13px;margin-top:10px;font:inherit;outline:none;
+}
+.feedbackText:focus,.feedbackInput:focus{border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,.12)}
+.feedbackSubmit{width:100%;margin-top:12px}
+.feedbackThanks{text-align:center;padding:24px 10px}
+.thanksIcon{font-size:48px}
+@media(max-width:600px){
+  .feedbackFloat{right:12px;bottom:12px;padding:11px 15px}
+  .feedbackChoices{grid-template-columns:1fr}
+}
+
+
+.numpuzWrap{max-width:430px;margin:auto}.numpuzTop{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}.numpuzTop>div{flex:1;text-align:center;padding:10px 12px;border:1px solid var(--border);border-radius:14px;background:var(--card)}.numpuzTop span{display:block;font-size:11px;font-weight:800;letter-spacing:.08em}.numpuzTop strong{display:block;font-size:22px;margin-top:2px}.numpuzBoard{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:9px;border-radius:18px;background:linear-gradient(135deg,#111827,#1e293b);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}.numpuzTile,.numpuzEmpty{aspect-ratio:1;border:0;border-radius:13px;display:grid;place-items:center;font-size:clamp(22px,7vw,32px);font-weight:900}.numpuzTile{cursor:pointer;color:#fff;background:linear-gradient(145deg,#3b82f6,#6366f1);box-shadow:0 5px 0 #27358d,0 7px 14px rgba(0,0,0,.18);transition:transform .12s,filter .12s}.numpuzTile:active{transform:translateY(4px);box-shadow:0 1px 0 #27358d}.numpuzTile:hover{filter:brightness(1.08)}.numpuzEmpty{background:rgba(255,255,255,.07);border:1px dashed rgba(255,255,255,.15)}.numpuzActions{display:flex;gap:9px;margin-top:12px}.numpuzActions .btn2{flex:1}.numpuzWrap .result{margin-top:10px}
+.rushWrap{max-width:430px;margin:auto}.rushBoard{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:9px;border-radius:18px;background:linear-gradient(135deg,#111827,#1e293b)}.rushTile{aspect-ratio:1;border:0;border-radius:13px;background:linear-gradient(145deg,#06b6d4,#2563eb);color:#fff;font-size:clamp(21px,6vw,30px);font-weight:900;cursor:pointer;box-shadow:0 5px 0 #174b91;transition:.12s}.rushTile:active{transform:translateY(4px);box-shadow:0 1px 0 #174b91}.rushTile.done{opacity:.35;transform:scale(.92)}.rushTile:hover{filter:brightness(1.08)}
+
+.gameHero{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 30px;margin-bottom:18px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(135deg,var(--card),var(--soft));box-shadow:var(--shadow);overflow:hidden;position:relative}.gameHero h2{font-size:32px;letter-spacing:-1px;margin:8px 0 3px}.gameHero p{color:var(--muted);font-size:13px}.gameBadge{display:inline-flex;padding:7px 11px;border-radius:999px;background:#6d5dfc16;border:1px solid #6d5dfc25;color:var(--p);font-size:11px;font-weight:900}.gameHeroArt{font-size:38px;white-space:nowrap}.gameHeroArt span{font-size:20px;color:var(--p);margin:0 5px}.gameTools{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:16px}.gameSearch{position:relative;flex:1;max-width:440px}.gameSearch input{width:100%;height:46px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:14px;padding:0 15px 0 40px;outline:none}.gameSearch input:focus{border-color:var(--p)}.gameSearch span{position:absolute;left:14px;top:10px;color:var(--muted);font-size:20px}.gameFilters{display:flex;gap:7px;flex-wrap:wrap}.gameFilter{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:9px 12px;border-radius:12px;font-size:12px;font-weight:800}.gameFilter.active{background:var(--soft);color:var(--p);border-color:#6d5dfc55}.gameTop{display:flex;justify-content:space-between}.easyTag{font-size:9px;font-weight:900;color:var(--green);background:#10b98114;border:1px solid #10b98130;padding:5px 8px;border-radius:999px}.gameMeta{display:flex;justify-content:space-between;margin-top:16px;padding-top:11px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);font-weight:800}.gameMeta span{color:var(--p);font-size:16px}.gameEmpty{text-align:center;color:var(--muted);padding:30px;border:1px dashed var(--line);border-radius:18px}.wordGame{max-width:470px;margin:auto;text-align:center}.wordLetters{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:18px 0}.wordChip{min-width:46px;height:46px;border-radius:13px;background:var(--soft);border:1px solid var(--line);display:grid;place-items:center;font-size:21px;font-weight:900;color:var(--p)}.wordHint{padding:12px;border-radius:13px;background:var(--soft);color:var(--muted);font-size:12px;margin:12px 0}.wordInput{width:100%;padding:14px;border:1px solid var(--line);border-radius:13px;background:var(--bg);color:var(--text);outline:none;text-align:center;font-weight:800;font-size:18px}.wordInput:focus{border-color:var(--p)}.wordScore{display:flex;justify-content:space-between;margin-bottom:8px;color:var(--muted);font-size:12px}.letterGuess{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:10px 0}.letterBox{height:48px;border:1px solid var(--line);border-radius:12px;background:var(--bg);display:grid;place-items:center;font-size:19px;font-weight:900}.letterBox.good{background:#10b98122;border-color:#10b98166;color:var(--green)}.letterBox.close{background:#f59e0b1c;border-color:#f59e0b66;color:#b45309}.letterBox.bad{background:#64748b18;color:var(--muted)}.gameNote{font-size:11px;color:var(--muted);margin-top:10px}@media(max-width:700px){.gameHero{padding:22px}.gameHeroArt{font-size:25px}.gameTools{flex-direction:column;align-items:stretch}.gameSearch{max-width:none}.gameFilters{justify-content:center}.gamegrid{grid-template-columns:1fr 1fr}}@media(max-width:470px){.gamegrid{grid-template-columns:1fr}.gameHeroArt{display:none}}
+
+.sidebarOverlay{position:fixed;inset:0;background:#0008;backdrop-filter:blur(4px);z-index:1200;display:none}.sidebarOverlay.show{display:block}.sidebar{position:fixed;top:0;left:0;height:100%;width:min(340px,88vw);background:var(--card);border-right:1px solid var(--line);z-index:1201;transform:translateX(-105%);transition:transform .25s ease;box-shadow:20px 0 60px rgba(0,0,0,.18);padding:20px;overflow:auto}.sidebar.show{transform:translateX(0)}.sideHead{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--line)}.sideBrand{font-weight:900;font-size:20px;display:flex;gap:9px;align-items:center}.sideClose{width:40px;height:40px;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--text);font-size:22px}.sideNav{display:grid;gap:8px;margin-top:18px}.sideNav a,.sideAction{display:flex;align-items:center;gap:12px;text-decoration:none;border:1px solid transparent;background:transparent;color:var(--text);padding:13px 14px;border-radius:14px;font-weight:800;font-size:14px}.sideNav a:hover,.sideAction:hover{background:var(--soft);border-color:var(--line)}.sideIcon{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:var(--soft)}.sideCard{margin-top:18px;padding:15px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,var(--soft),var(--card))}.sideCard b{display:block;margin-bottom:4px}.sideCard p{font-size:12px;color:var(--muted)}
+.wordSearchWrap{max-width:430px;margin:auto}.wsTarget{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:15px;background:var(--soft);margin-bottom:12px}.wsGrid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;padding:8px;background:#111827;border-radius:17px}.wsCell{aspect-ratio:1;border:0;border-radius:9px;background:#fff;color:#111827;font-weight:900;font-size:clamp(15px,5vw,22px)}.wsCell.selected{background:#fbbf24;color:#111827;transform:scale(.94)}.wsCell.found{background:#10b981;color:#fff}.wsActions{display:flex;gap:8px;margin-top:10px}.wsActions>*{flex:1}.matchWrap{max-width:430px;margin:auto}.matchGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.matchCard{aspect-ratio:1;border:0;border-radius:14px;background:linear-gradient(145deg,#6d5dfc,#06b6d4);color:#fff;font-size:24px;font-weight:900}.matchCard.open{background:var(--soft);color:var(--text);border:1px solid var(--line)}.matchCard.matched{background:#10b981;color:#fff}.gameCount{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:8px}
+
+.mathGame{max-width:470px;margin:auto}.mathScore{display:flex;justify-content:space-between;gap:8px;margin-bottom:12px}.mathStat{flex:1;text-align:center;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.mathStat small{display:block;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.08em}.mathStat b{display:block;font-size:21px;margin-top:2px}.mathQuestion{padding:18px;border-radius:18px;background:linear-gradient(135deg,var(--soft),var(--card));border:1px solid var(--line);text-align:center;margin-bottom:12px}.mathQuestion .eq{font-size:34px;font-weight:950;letter-spacing:.03em}.mathQuestion .blank{display:inline-grid;place-items:center;min-width:54px;height:50px;padding:0 8px;border-radius:13px;background:var(--card);border:2px dashed var(--p);color:var(--p)}.mathChoices{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.mathChoice{min-height:52px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);font-size:20px;font-weight:900;cursor:pointer}.mathChoice:hover{border-color:var(--p);transform:translateY(-1px)}.mathChoice.correct{background:#10b98120;border-color:#10b98170;color:var(--green)}.mathChoice.wrong{background:#ef444416;border-color:#ef444455;color:#dc2626}.mathProgress{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin:12px 0}.mathProgress span{display:block;height:100%;background:linear-gradient(90deg,#6d5dfc,#06b6d4);width:0;transition:width .25s}.mathHint{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}.mathActions{display:flex;gap:8px;margin-top:12px}.mathActions>*{flex:1}
+
+.ageTabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}.ageTab{border:1px solid var(--border);background:var(--card);color:var(--text);padding:10px 13px;border-radius:12px;cursor:pointer;font-weight:800}.ageTab.active{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border-color:transparent}.statsGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.statsGrid span{padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--muted);font-size:13px}.statsGrid b{display:block;color:var(--text);font-size:15px;margin-top:3px}.miniNote,.birthdayCard{margin-top:12px;padding:13px;border-radius:13px;background:rgba(99,102,241,.08);border:1px solid var(--border)}.birthdayCard{font-size:16px}@media(max-width:520px){.statsGrid{grid-template-columns:1fr}.ageTabs{display:grid;grid-template-columns:1fr 1fr 1fr}.ageTab{padding:9px 5px;font-size:12px}}
+</style>
+</head>
+<body>
+<header class="nav">
+<div class="container navin">
+<a class="logo" href="#home"><span class="logoMark">✦</span>ToolNest</a>
+<div class="actions">
+<button class="ico menu" id="menuBtn" aria-label="Open sidebar" title="Menu">⋮</button>
+<button class="ico" id="themeBtn" title="Theme">🌙</button>
+</div>
+</div>
+</header>
+<div class="sidebarOverlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar" aria-label="ToolNest menu">
+<div class="sideHead"><div class="sideBrand"><span class="logoMark" style="width:36px;height:36px;border-radius:11px;font-size:16px">✦</span>ToolNest</div><button class="sideClose" id="sideClose" aria-label="Close menu">×</button></div>
+<nav class="sideNav">
+<a href="#home" onclick="closeSidebar()"><span class="sideIcon">🏠</span>Home</a>
+<a href="#tools" onclick="closeSidebar()"><span class="sideIcon">🧰</span>All Tools</a>
+<a href="#categories" onclick="closeSidebar()"><span class="sideIcon">📂</span>Categories</a>
+<a href="#games" onclick="closeSidebar()"><span class="sideIcon">🎮</span>Games</a>
+<a href="#favorites" onclick="closeSidebar()"><span class="sideIcon">⭐</span>Favorites</a>
+<a href="#about" onclick="closeSidebar()"><span class="sideIcon">ℹ️</span>About</a>
+<button class="sideAction" onclick="openFeedback();closeSidebar()"><span class="sideIcon">💬</span>Give Feedback</button>
+</nav>
+<div class="sideCard"><b>✨ ToolNest</b><p>Free tools, quick games and useful everyday utilities — all in one place.</p></div>
+</aside>
+
+<main id="home">
+<section class="hero">
+<div class="glow"></div>
+<div class="badge">⚡ Free • Fast • Browser-based</div>
+<h1>Powerful tools.<br><span class="grad">Zero complexity.</span></h1>
+<p>ToolNest brings useful calculators, text utilities, developer tools, image tools and everyday helpers into one clean workspace.</p>
+<div class="search"><input id="search" placeholder="Search any tool… try “JSON”, “image”, “loan”, “password”"><span>⌕</span></div>
+<div class="quick">
+<button class="chip" onclick="openTool('calculator')">Calculator</button>
+<button class="chip" onclick="openTool('imagecompress')">Image Compressor</button>
+<button class="chip" onclick="openTool('password')">Password</button>
+<button class="chip" onclick="openTool('json')">JSON</button>
+</div>
+</section>
+
+<section class="container stats">
+<div class="stat"><b id="toolCount">20+</b><span>Useful Tools</span></div>
+<div class="stat"><b>10</b><span>Categories</span></div>
+<div class="stat"><b>0</b><span>Sign-up Required</span></div>
+<div class="stat"><b>100%</b><span>Responsive</span></div>
+</section>
+
+<section class="container section" id="tools">
+<div class="head"><div><h2>Explore Tools</h2><p>Everything important, without the clutter.</p></div></div>
+<div class="grid" id="toolGrid"></div>
+</section>
+
+<section class="container section" id="categories">
+<div class="head"><div><h2>Categories</h2><p>Jump directly to what you need.</p></div></div>
+<div class="catgrid">
+<div class="cat" onclick="filterCat('Calculator')">🧮<b>Calculators</b><span>Math & finance</span></div>
+<div class="cat" onclick="filterCat('Text')">📝<b>Text</b><span>Writing utilities</span></div>
+<div class="cat" onclick="filterCat('Developer')">💻<b>Developer</b><span>Code & data</span></div>
+<div class="cat" onclick="filterCat('Image')">🖼️<b>Image</b><span>Browser image tools</span></div>
+<div class="cat" onclick="filterCat('Converter')">🔄<b>Converters</b><span>Units & formats</span></div>
+<div class="cat" onclick="filterCat('Utility')">🛠️<b>Utilities</b><span>Everyday helpers</span></div>
+</div>
+</section>
+
+<section class="container section">
+<div class="head"><div><h2>Made for real work</h2><p>Useful features that make ToolNest feel like a proper toolbox.</p></div></div>
+<div class="features">
+<div class="feature"><i>🔒</i><h3>Local-first</h3><p>Most tools process information directly in your browser. No account is required.</p></div>
+<div class="feature"><i>📱</i><h3>Phone friendly</h3><p>Designed for small screens first, with a clean desktop layout too.</p></div>
+<div class="feature"><i>⭐</i><h3>Favorites & history</h3><p>Save frequently used tools and keep your recent-tool history on this device.</p></div>
+</div>
+</section>
+
+<section class="container section" id="games">
+<div class="gameHero"><div><span class="gameBadge">🎮 PLAY • RELAX • REPEAT</span><h2>Mini Games Zone</h2><p>Easy-to-play games for quick fun. No install, no complicated rules.</p></div><div class="gameHeroArt">🧩 <span>+</span> 🔤 <span>+</span> ⚡</div></div>
+<div class="gameTools"><div class="gameSearch"><span>⌕</span><input id="gameSearch" oninput="filterGames()" placeholder="Search games..." aria-label="Search games"></div><div class="gameFilters"><button class="gameFilter active" onclick="filterGameMode('all',this)">All</button><button class="gameFilter" onclick="filterGameMode('number',this)">🔢 Number</button><button class="gameFilter" onclick="filterGameMode('word',this)">🔤 Word</button><button class="gameFilter" onclick="filterGameMode('math',this)">➗ Math</button></div></div>
+<div class="gamegrid" id="gameGrid">
+<div class="game" data-type="number" onclick="openGame('numpuz')"><div class="gameTop"><span class="gameIcon">🔢</span><span class="easyTag">EASY</span></div><h3>Number Puzzle</h3><p>Slide the blocks and arrange 1 → 15. Relaxing and simple.</p><div class="gameMeta">👆 Tap to play <span>→</span></div></div>
+<div class="game" data-type="number" onclick="openGame('numberRush')"><div class="gameTop"><span class="gameIcon">⚡</span><span class="easyTag">EASY</span></div><h3>Number Rush</h3><p>Tap 1 → 16 in order and beat your own time.</p><div class="gameMeta">⏱ Quick game <span>→</span></div></div>
+<div class="game" data-type="word" onclick="openGame('wordSearch')"><div class="gameTop"><span class="gameIcon">🔎</span><span class="easyTag">EASY</span></div><h3>Word Search</h3><p>Find simple hidden words in a colorful letter grid.</p><div class="gameMeta">🔤 Find & tap <span>→</span></div></div>
+<div class="game" data-type="word" onclick="openGame('wordMatch')"><div class="gameTop"><span class="gameIcon">🧠</span><span class="easyTag">EASY</span></div><h3>Word Match</h3><p>Match pairs of simple words. Easy memory fun.</p><div class="gameMeta">✨ Match pairs <span>→</span></div></div>
+<div class="game" data-type="math" onclick="openGame('mathPuzzle')"><div class="gameTop"><span class="gameIcon">➗</span><span class="easyTag">EASY</span></div><h3>Math Puzzle</h3><p>Solve quick number equations and fill the missing answer.</p><div class="gameMeta">🧮 Quick brain fun <span>→</span></div></div>
+</div><div id="gameEmpty" class="gameEmpty" style="display:none">No game found. Try another search.</div>
+</section>
+
+<section class="container section" id="favorites">
+<div class="head"><div><h2>Favorites</h2><p>Your saved tools stay on this device.</p></div></div>
+<div class="grid" id="favGrid"><div class="empty">⭐ No favorites yet. Tap the star on any tool.</div></div>
+</section>
+</main>
+
+<footer class="footer" id="about">
+<div class="container">
+<div class="footgrid">
+<div>
+<a class="logo" href="#home"><span class="logoMark">✦</span>ToolNest</a>
+<p style="color:var(--muted);font-size:13px;margin-top:10px;max-width:430px">A free collection of practical web tools developed by ALFAIZ ANSARI.</p>
+<p style="color:var(--muted);font-size:13px;margin-top:8px">Developer: <b style="color:var(--text)">ALFAIZ ANSARI</b><br>Email: <a href="mailto:alfaiz9833@gmail.com">alfaiz9833@gmail.com</a></p>
+</div>
+<div><h4>Company</h4><a href="javascript:openLegal('about')">About ToolNest</a><a href="javascript:openLegal('contact')">Contact</a><a href="javascript:openLegal('privacy')">Privacy Policy</a></div>
+<div><h4>Legal</h4><a href="javascript:openLegal('terms')">Terms of Use</a><a href="javascript:openLegal('disclaimer')">Disclaimer</a><a href="javascript:openLegal('cookies')">Cookie Notice</a></div>
+</div>
+<div class="copy"><span>© 2026 ToolNest. All rights reserved.</span><span>Developed by ALFAIZ ANSARI</span></div>
+</div>
+</footer>
+
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeModal()">×</button><h2 id="mTitle"></h2><p class="desc" id="mDesc"></p><div id="mBody"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const tools=[
+{id:"calculator",name:"Smart Calculator",icon:"🧮",cat:"Calculator",desc:"A full browser calculator with keyboard support.",type:"calculator"},
+{id:"age",name:"Age Calculator",icon:"🎂",cat:"Calculator",desc:"Exact age, next birthday, total days and more.",type:"age"},
+{id:"datediff",name:"Date Difference",icon:"📅",cat:"Date & Time",desc:"Find the exact gap between two dates.",type:"datediff"},
+{id:"birthday",name:"Birthday Countdown",icon:"🎉",cat:"Date & Time",desc:"See days left until the next birthday.",type:"birthday"},
+{id:"dayofweek",name:"Day of Birth",icon:"🗓️",cat:"Date & Time",desc:"Find the weekday you were born on.",type:"dayofweek"},
+{id:"countdown",name:"Countdown Timer",icon:"⏳",cat:"Utility",desc:"Set a simple hours, minutes and seconds countdown.",type:"countdown"},
+{id:"percentage",name:"Percentage",icon:"📊",cat:"Calculator",desc:"Percent of a number and percentage change.",type:"percentage"},
+{id:"bmi",name:"BMI Calculator",icon:"⚖️",cat:"Calculator",desc:"Calculate BMI from height and weight.",type:"bmi"},
+{id:"gst",name:"GST Calculator",icon:"💰",cat:"Calculator",desc:"Calculate GST amount and final price.",type:"gst"},
+{id:"emi",name:"EMI Calculator",icon:"💳",cat:"Calculator",desc:"Monthly EMI, interest and total payment.",type:"emi"},
+{id:"loan",name:"Loan Calculator",icon:"🏦",cat:"Calculator",desc:"Loan payment breakdown with principal and interest.",type:"loan"},
+{id:"word",name:"Word Counter",icon:"📝",cat:"Text",desc:"Words, characters, sentences, lines and reading time.",type:"word"},
+{id:"case",name:"Case Converter",icon:"Aa",cat:"Text",desc:"Uppercase, lowercase, title and sentence case.",type:"case"},
+{id:"slug",name:"Slug Generator",icon:"🔗",cat:"Text",desc:"Turn titles into clean URL slugs.",type:"slug"},
+{id:"json",name:"JSON Formatter",icon:"{ }",cat:"Developer",desc:"Format, validate and minify JSON.",type:"json"},
+{id:"base64",name:"Base64 Encoder",icon:"🔐",cat:"Developer",desc:"Encode and decode Base64 text.",type:"base64"},
+{id:"url",name:"URL Encoder",icon:"🌐",cat:"Developer",desc:"Encode or decode URL components.",type:"url"},
+{id:"imagecompress",name:"Image Compressor",icon:"🖼️",cat:"Image",desc:"Compress images locally with adjustable quality.",type:"imagecompress"},
+{id:"imageconvert",name:"Image Converter",icon:"🎨",cat:"Image",desc:"Convert images to PNG, JPEG or WebP.",type:"imageconvert"},
+{id:"length",name:"Length Converter",icon:"📏",cat:"Converter",desc:"Meters, km, miles, feet and more.",type:"length"},
+{id:"temperature",name:"Temperature",icon:"🌡️",cat:"Converter",desc:"Celsius, Fahrenheit and Kelvin.",type:"temperature"},
+{id:"password",name:"Password Generator",icon:"🛡️",cat:"Utility",desc:"Generate strong random passwords.",type:"password"},
+{id:"qr",name:"QR Generator",icon:"▦",cat:"Utility",desc:"Create a QR code from text or a URL.",type:"qr"},
+{id:"random",name:"Random Number",icon:"🎲",cat:"Utility",desc:"Generate random numbers in any range.",type:"random"},
+{id:"stopwatch",name:"Stopwatch",icon:"⏱️",cat:"Utility",desc:"Accurate browser stopwatch.",type:"stopwatch"}
+];
+document.getElementById("toolCount").textContent=tools.length+"+";
+let fav=JSON.parse(localStorage.getItem("tn_fav")||"[]");
+let recent=JSON.parse(localStorage.getItem("tn_recent")||"[]");
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function toast(s){const t=document.getElementById("toast");t.textContent=s;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+function save(){localStorage.setItem("tn_fav",JSON.stringify(fav));localStorage.setItem("tn_recent",JSON.stringify(recent))}
+function card(t){return `<div class="card" onclick="openTool('${t.id}')"><button class="fav ${fav.includes(t.id)?"on":""}" onclick="event.stopPropagation();toggleFav('${t.id}')">${fav.includes(t.id)?"★":"☆"}</button><div class="toolIcon">${t.icon}</div><h3>${t.name}</h3><p>${t.desc}</p></div>`}
+function render(list=tools){document.getElementById("toolGrid").innerHTML=list.length?list.map(card).join(""):'<div class="empty">🔎 No matching tools found.</div>'}
+function renderFav(){const a=tools.filter(x=>fav.includes(x.id));document.getElementById("favGrid").innerHTML=a.length?a.map(card).join(""):'<div class="empty">⭐ No favorites yet. Tap the star on any tool.</div>'}
+function toggleFav(id){fav=fav.includes(id)?fav.filter(x=>x!==id):[...fav,id];save();render();renderFav();toast(fav.includes(id)?"Added to favorites":"Removed from favorites")}
+function filterCat(c){document.getElementById("search").value="";render(tools.filter(x=>x.cat===c));document.getElementById("tools").scrollIntoView({behavior:"smooth"})}
+document.getElementById("search").addEventListener("input",e=>{const q=e.target.value.toLowerCase().trim();render(tools.filter(x=>(x.name+" "+x.cat+" "+x.desc).toLowerCase().includes(q)))});
+function openSidebar(){document.getElementById("sidebar")?.classList.add("show");document.getElementById("sidebarOverlay")?.classList.add("show")}
+function closeSidebar(){document.getElementById("sidebar")?.classList.remove("show");document.getElementById("sidebarOverlay")?.classList.remove("show")}
+document.getElementById("menuBtn").onclick=openSidebar;document.getElementById("sideClose").onclick=closeSidebar;document.getElementById("sidebarOverlay").onclick=closeSidebar;
+
+const savedTheme=localStorage.getItem("tn_theme");if(savedTheme==="dark"){document.body.classList.add("dark");document.getElementById("themeBtn").textContent="☀️"}
+document.getElementById("themeBtn").onclick=()=>{document.body.classList.toggle("dark");const d=document.body.classList.contains("dark");localStorage.setItem("tn_theme",d?"dark":"light");document.getElementById("themeBtn").textContent=d?"☀️":"🌙"};
+
+function openModal(title,desc,body){document.getElementById("mTitle").textContent=title;document.getElementById("mDesc").textContent=desc||"";document.getElementById("mBody").innerHTML=body;document.getElementById("modal").classList.add("show");document.body.style.overflow="hidden"}
+function closeModal(){document.getElementById("modal").classList.remove("show");document.body.style.overflow=""}
+document.getElementById("modal").onclick=e=>{if(e.target.id==="modal")closeModal()}
+
+function openTool(id){
+const t=tools.find(x=>x.id===id);if(!t)return;
+recent=[id,...recent.filter(x=>x!==id)].slice(0,8);save();
+openModal(t.icon+" "+t.name,t.desc,toolHTML(t.type));
+if(t.type==="calculator")setTimeout(()=>document.getElementById("calcInput")?.focus(),50);
+}
+function toolHTML(type){
+if(type==="calculator")return `<div class="calcPro">
+<div class="calcTop"><div><span class="calcLabel">LIVE CALCULATOR</span><div id="calcMini" class="calcMini">Ready</div></div><button class="btn2" onclick="calcCopy()">Copy</button></div>
+<div class="calcScreen"><div id="calcHistory" class="calcHistory"></div><input id="calcInput" placeholder="0" readonly><div id="calcAns" class="calcAns">0</div></div>
+<div class="calcMemory"><button onclick="calcMem('MC')">MC</button><button onclick="calcMem('MR')">MR</button><button onclick="calcMem('M+')">M+</button><button onclick="calcMem('M-')">M−</button><button onclick="calcMem('MS')">MS</button></div>
+<div class="calcKeys">${["%","CE","C","⌫","sin","cos","tan","√","7","8","9","÷","4","5","6","×","1","2","3","−","0",".","(",")","+","="].map(x=>`<button class="${x==="="?"eq":""}" onclick="calcKey('${x}')">${x}</button>`).join("")}</div>
+<div class="result" id="calcResult"></div></div>`;
+if(type==="age")return `<div class="ageTabs"><button type="button" class="ageTab active" onclick="ageMode('basic',this)">🎂 Age</button><button type="button" class="ageTab" onclick="ageMode('birthday',this)">🎉 Birthday</button><button type="button" class="ageTab" onclick="ageMode('stats',this)">📊 Age Stats</button></div><div class="field"><label>Date of birth</label><input type="date" id="dob"></div><div class="field"><label>Calculate age on (optional)</label><input type="date" id="ageAsOf"></div><button class="btn" onclick="ageCalc()">Calculate</button><div class="result" id="ageR"></div><div id="ageExtra"></div>`;
+if(type==="datediff")return `<div class="row"><div class="field"><label>Start date</label><input type="date" id="dateStart"></div><div class="field"><label>End date</label><input type="date" id="dateEnd"></div></div><button class="btn" onclick="dateDiffCalc()">Calculate difference</button><div class="result" id="dateDiffR"></div>`;
+if(type==="birthday")return `<div class="field"><label>Your date of birth</label><input type="date" id="bdob"></div><button class="btn" onclick="birthdayCalc()">Show countdown</button><div class="result" id="birthdayR"></div>`;
+if(type==="dayofweek")return `<div class="field"><label>Date</label><input type="date" id="dowDate"></div><button class="btn" onclick="dayOfWeekCalc()">Find day</button><div class="result" id="dowR"></div>`;
+if(type==="countdown")return `<div class="row"><div class="field"><label>Hours</label><input id="cdH" type="number" min="0" max="99" value="0"></div><div class="field"><label>Minutes</label><input id="cdM" type="number" min="0" max="59" value="1"></div></div><div class="field"><label>Seconds</label><input id="cdS" type="number" min="0" max="59" value="0"></div><button class="btn" onclick="startCountdown()">▶ Start</button> <button class="btn2" onclick="resetCountdown()">↺ Reset</button><div class="result" id="countdownR">00:01:00</div>`;
+if(type==="percentage")return `<div class="field"><label>What is (%)</label><input id="p1" type="number" placeholder="20"></div><div class="field"><label>Of</label><input id="p2" type="number" placeholder="500"></div><button class="btn" onclick="percentCalc()">Calculate</button><div class="result" id="pR"></div>`;
+if(type==="bmi")return `<div class="row"><div class="field"><label>Weight (kg)</label><input id="bw" type="number"></div><div class="field"><label>Height (cm)</label><input id="bh" type="number"></div></div><button class="btn" onclick="bmiCalc()">Calculate BMI</button><div class="result" id="bR"></div>`;
+if(type==="gst")return `<div class="row"><div class="field"><label>Amount ₹</label><input id="ga" type="number"></div><div class="field"><label>GST %</label><select id="gr"><option>5</option><option>12</option><option selected>18</option><option>28</option></select></div></div><button class="btn" onclick="gstCalc()">Calculate GST</button><div class="result" id="gR"></div>`;
+if(type==="emi"||type==="loan")return `<div class="field"><label>Loan amount ₹</label><input id="la" type="number" placeholder="500000"></div><div class="field"><label>Annual interest %</label><input id="li" type="number" placeholder="8.5"></div><div class="field"><label>Duration (years)</label><input id="ly" type="number" placeholder="5"></div><button class="btn" onclick="emiCalc()">Calculate</button><div class="result" id="lR"></div>`;
+if(type==="word")return `<div class="field"><textarea id="wt" placeholder="Type or paste text..."></textarea></div><button class="btn" onclick="wordCalc()">Analyze text</button><div class="result" id="wR"></div>`;
+if(type==="case")return `<div class="field"><textarea id="ct" placeholder="Type your text..."></textarea></div><button class="btn" onclick="caseCalc()">Convert</button><div class="result" id="cR"></div>`;
+if(type==="slug")return `<div class="field"><input id="slugT" placeholder="My Awesome Tool"></div><button class="btn" onclick="slugCalc()">Generate slug</button><div class="result" id="sR"></div>`;
+if(type==="json")return `<div class="field"><textarea id="jt" placeholder='{"name":"ToolNest","free":true}'></textarea></div><div class="row"><button class="btn" onclick="jsonFmt()">Format</button><button class="btn2" onclick="jsonMini()">Minify</button></div><div class="result" id="jR"></div>`;
+if(type==="base64")return `<div class="field"><textarea id="b64" placeholder="Text..."></textarea></div><div class="row"><button class="btn" onclick="b64enc()">Encode</button><button class="btn2" onclick="b64dec()">Decode</button></div><div class="result" id="bR"></div>`;
+if(type==="url")return `<div class="field"><textarea id="urlT" placeholder="https://example.com/?hello world"></textarea></div><div class="row"><button class="btn" onclick="urlEnc()">Encode</button><button class="btn2" onclick="urlDec()">Decode</button></div><div class="result" id="uR"></div>`;
+if(type==="imagecompress")return `<div class="notice">Your image is processed in your browser. Choose a quality and download the compressed result.</div><div class="field"><input id="imgC" type="file" accept="image/*"></div><div class="field"><label>Quality</label><input id="iq" type="range" min=".1" max="1" step=".05" value=".7"></div><button class="btn" onclick="compressImage()">Compress image</button><div class="result" id="iR"></div>`;
+if(type==="imageconvert")return `<div class="field"><input id="imgV" type="file" accept="image/*"></div><div class="field"><label>Output</label><select id="fmt"><option value="image/png">PNG</option><option value="image/jpeg">JPEG</option><option value="image/webp">WebP</option></select></div><button class="btn" onclick="convertImage()">Convert & download</button><div class="result" id="ivR"></div>`;
+if(type==="length")return `<div class="field"><input id="lv" type="number" placeholder="100"></div><div class="row"><select id="lf"><option value="m">Meter</option><option value="km">Kilometer</option><option value="ft">Feet</option><option value="mi">Mile</option><option value="in">Inch</option></select><select id="lt"><option value="m">Meter</option><option value="km">Kilometer</option><option value="ft">Feet</option><option value="mi">Mile</option><option value="in">Inch</option></select></div><br><button class="btn" onclick="lengthCalc()">Convert</button><div class="result" id="lenR"></div>`;
+if(type==="temperature")return `<div class="field"><input id="tv" type="number" placeholder="25"></div><div class="row"><select id="tf"><option>C</option><option>F</option><option>K</option></select><select id="tt"><option>F</option><option>C</option><option>K</option></select></div><br><button class="btn" onclick="tempCalc()">Convert</button><div class="result" id="tempR"></div>`;
+if(type==="password")return `<div class="field"><label>Length</label><input id="pl" type="number" min="6" max="100" value="20"></div><div class="field"><label><input id="ps" type="checkbox" checked> Symbols</label></div><button class="btn" onclick="passGen()">Generate secure password</button><div class="result" id="passR"></div>`;
+if(type==="qr")return `<div class="notice">QR generation uses a public QR image service. Do not encode secrets or private information.</div><div class="field"><input id="qrT" placeholder="Text or URL"></div><button class="btn" onclick="qrGen()">Generate QR</button><div class="result" id="qrR"></div>`;
+if(type==="random")return `<div class="row"><div class="field"><label>Min</label><input id="rn1" type="number" value="1"></div><div class="field"><label>Max</label><input id="rn2" type="number" value="100"></div></div><button class="btn" onclick="randomGen()">Generate</button><div class="result" id="rnR"></div>`;
+if(type==="stopwatch")return `<div style="text-align:center"><div id="sw" style="font-size:45px;font-weight:900;margin:15px">00:00.00</div><div class="row"><button class="btn" onclick="swStart()">Start</button><button class="btn2" onclick="swStop()">Pause</button><button class="btn2" onclick="swReset()">Reset</button></div></div>`;
+}
+function show(id,html){const e=document.getElementById(id);e.innerHTML=html;e.classList.add("show")}
+function copy(v){navigator.clipboard?.writeText(v);toast("Copied to clipboard")}
+let calcMemoryValue=0;
+function calcSafe(expr){
+try{
+let e=expr.replaceAll("×","*").replaceAll("÷","/").replaceAll("−","-").replaceAll("√","Math.sqrt");
+e=e.replace(/\bsin\(/g,"Math.sin(").replace(/\bcos\(/g,"Math.cos(").replace(/\btan\(/g,"Math.tan(");
+if(!/^[0-9+\-*/().%\s,a-zA-Z]+$/.test(e)) throw 0;
+return Function("return "+e)();
+}catch{return null}}
+function calcKey(k){
+const i=document.getElementById("calcInput"),a=document.getElementById("calcAns"),mini=document.getElementById("calcMini");
+if(!i)return;
+if(k==="C"||k==="CE"){i.value="";a.textContent="0";mini.textContent="Cleared";document.getElementById("calcHistory").textContent="";return}
+if(k==="⌫"){i.value=i.value.slice(0,-1);mini.textContent="Editing";return}
+if(k==="="){
+let x=calcSafe(i.value);if(x===null||!Number.isFinite(x)){a.textContent="Error";mini.textContent="Invalid expression";return}
+x=Number.isInteger(x)?x:Number(x.toFixed(10));document.getElementById("calcHistory").textContent=i.value+" =";a.textContent=x;i.value=String(x);mini.textContent="Calculated";document.getElementById("calcResult").innerHTML=`Result: <strong>${x}</strong>`;
+return}
+if(k==="%"){i.value+="%";mini.textContent="Percent";return}
+if(["sin","cos","tan","√"].includes(k)){i.value+=k+"(";mini.textContent=k+" mode";return}
+i.value+=k;mini.textContent="Typing…";
+}
+function calcMem(op){
+const i=document.getElementById("calcInput"),a=document.getElementById("calcAns");
+const current=calcSafe(i.value||a.textContent)||0;
+if(op==="MC")calcMemoryValue=0;
+if(op==="MR")i.value=String(calcMemoryValue);
+if(op==="M+")calcMemoryValue+=current;
+if(op==="M-")calcMemoryValue-=current;
+if(op==="MS")calcMemoryValue=current;
+toast("Memory: "+calcMemoryValue);
+}
+function calcCopy(){const v=document.getElementById("calcAns")?.textContent;if(v)copy(v)}
+
+function dateParts(s){const [y,m,d]=s.split("-").map(Number);return {y,m,d}}
+function utcDate(y,m,d){return new Date(Date.UTC(y,m-1,d))}
+function ageBetween(start,end){let y=end.y-start.y,m=end.m-start.m,d=end.d-start.d;if(d<0){m--;d+=new Date(Date.UTC(end.y,end.m-1,0)).getUTCDate()}if(m<0){y--;m+=12}return {y,m,d}}
+function ageMode(mode,btn){document.querySelectorAll(".ageTab").forEach(x=>x.classList.remove("active"));if(btn)btn.classList.add("active");const extra=document.getElementById("ageExtra");if(!extra)return;extra.dataset.mode=mode;extra.innerHTML=mode==="birthday"?`<div class="miniNote">🎉 Your next birthday countdown will appear after calculation.</div>`:mode==="stats"?`<div class="miniNote">📊 Stats include total days, weeks, hours and minutes lived.</div>`:`<div class="miniNote">💡 Leave “Calculate age on” empty to use today.</div>`}
+function ageCalc(){const dob=document.getElementById("dob")?.value;if(!dob){toast("Please select your date of birth.");return}const asOf=document.getElementById("ageAsOf")?.value||new Date().toISOString().slice(0,10);const a=dateParts(dob),b=dateParts(asOf);if(utcDate(a.y,a.m,a.d)>utcDate(b.y,b.m,b.d)){toast("Age date must be after birth date.");return}const age=ageBetween(a,b),birth=utcDate(a.y,a.m,a.d),end=utcDate(b.y,b.m,b.d),totalDays=Math.floor((end-birth)/86400000);let nextYear=b.y,next=utcDate(nextYear,a.m,a.d);if(next<end){nextYear++;next=utcDate(nextYear,a.m,a.d)}if(a.m===2&&a.d===29&&!isLeap(nextYear))next=utcDate(nextYear,2,28);const daysTo=Math.max(0,Math.ceil((next-end)/86400000));const r=document.getElementById("ageR");r.innerHTML=`<strong>You are ${age.y} years, ${age.m} months and ${age.d} days old.</strong><div class="statsGrid"><span>🎂 Next birthday <b>${daysTo} days</b></span><span>📅 Total days <b>${totalDays.toLocaleString()}</b></span><span>📆 Total weeks <b>${Math.floor(totalDays/7).toLocaleString()}</b></span><span>🗓️ Born on <b>${birth.toLocaleDateString(undefined,{weekday:"long"})}</b></span></div>`;const mode=document.getElementById("ageExtra")?.dataset.mode||"basic";if(mode==="stats")document.getElementById("ageExtra").innerHTML=`<div class="statsGrid"><span>⏰ Approx. hours <b>${(totalDays*24).toLocaleString()}</b></span><span>⏱️ Approx. minutes <b>${(totalDays*1440).toLocaleString()}</b></span><span>🎈 Birth year <b>${a.y}</b></span><span>🧮 Leap years crossed <b>${countLeapYears(a.y,b.y)}</b></span></div>`;else if(mode==="birthday")document.getElementById("ageExtra").innerHTML=`<div class="birthdayCard">🎉 <strong>${daysTo===0?"Happy Birthday!":daysTo+" days until your next birthday."}</strong><br><small>Next birthday: ${next.toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric"})}</small></div>`}
+function isLeap(y){return y%4===0&&(y%100!==0||y%400===0)}
+function countLeapYears(a,b){let n=0;for(let y=a;y<=b;y++)if(isLeap(y))n++;return n}
+function dateDiffCalc(){const s=document.getElementById("dateStart")?.value,e=document.getElementById("dateEnd")?.value;if(!s||!e){toast("Select both dates.");return}const a=dateParts(s),b=dateParts(e),da=utcDate(a.y,a.m,a.d),db=utcDate(b.y,b.m,b.d),diff=Math.abs(Math.floor((db-da)/86400000));document.getElementById("dateDiffR").innerHTML=`<strong>${diff.toLocaleString()} days apart.</strong><div class="statsGrid"><span>📆 Weeks <b>${Math.floor(diff/7).toLocaleString()}</b></span><span>🗓️ Months approx. <b>${(diff/30.4375).toFixed(1)}</b></span><span>📅 Years approx. <b>${(diff/365.2425).toFixed(2)}</b></span><span>↔️ Direction <b>${db>=da?"Forward":"Backward"}</b></span></div>`}
+function birthdayCalc(){const s=document.getElementById("bdob")?.value;if(!s){toast("Select your birth date.");return}const a=dateParts(s),now=new Date(),today=utcDate(now.getUTCFullYear(),now.getUTCMonth()+1,now.getUTCDate());let y=now.getUTCFullYear(),next=utcDate(y,a.m,a.d);if(next<today){y++;next=utcDate(y,a.m,a.d)}if(a.m===2&&a.d===29&&!isLeap(y))next=utcDate(y,2,28);const days=Math.max(0,Math.ceil((next-today)/86400000)),age=y-a.y;document.getElementById("birthdayR").innerHTML=`🎉 <strong>${days===0?"Happy Birthday!":days+" days to go!"}</strong><div class="statsGrid"><span>🎂 Turning <b>${age}</b></span><span>📅 Date <b>${next.toLocaleDateString(undefined,{day:"numeric",month:"long"})}</b></span></div>`}
+function dayOfWeekCalc(){const s=document.getElementById("dowDate")?.value;if(!s){toast("Select a date.");return}const a=dateParts(s),d=utcDate(a.y,a.m,a.d);document.getElementById("dowR").innerHTML=`🗓️ <strong>${d.toLocaleDateString(undefined,{weekday:"long"})}</strong><br><small>${d.toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric"})}</small>`}
+let countdownTimer=null,countdownLeft=0;function renderCountdown(){const r=document.getElementById("countdownR");if(!r)return;const h=Math.floor(countdownLeft/3600),m=Math.floor(countdownLeft%3600/60),s=countdownLeft%60;r.textContent=`${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`}
+function startCountdown(){if(countdownTimer)clearInterval(countdownTimer);const h=Math.max(0,Math.min(99,Number(document.getElementById("cdH")?.value)||0)),m=Math.max(0,Math.min(59,Number(document.getElementById("cdM")?.value)||0)),s=Math.max(0,Math.min(59,Number(document.getElementById("cdS")?.value)||0));countdownLeft=h*3600+m*60+s;if(countdownLeft<=0){toast("Set a time first.");return}renderCountdown();countdownTimer=setInterval(()=>{countdownLeft--;renderCountdown();if(countdownLeft<=0){clearInterval(countdownTimer);countdownTimer=null;toast("⏰ Time is up!")}},1000)}
+function resetCountdown(){if(countdownTimer)clearInterval(countdownTimer);countdownTimer=null;countdownLeft=0;const h=document.getElementById("cdH"),m=document.getElementById("cdM"),s=document.getElementById("cdS");if(h)h.value=0;if(m)m.value=1;if(s)s.value=0;renderCountdown()}
+function percentCalc(){const a=+p1.value,b=+p2.value;show("pR",`<strong>${(a*b/100).toFixed(2)}</strong>`)}
+function bmiCalc(){const w=+bw.value,h=+bh.value/100;if(!w||!h)return;const x=w/(h*h);show("bR",`<strong>BMI ${x.toFixed(2)}</strong><br>${x<18.5?"Underweight":x<25?"Normal range":x<30?"Overweight":"Obesity"}`)}
+function gstCalc(){const a=+ga.value,r=+gr.value;if(!a)return;const g=a*r/100;show("gR",`GST: <strong>₹${g.toFixed(2)}</strong><br>Total: <strong>₹${(a+g).toFixed(2)}</strong>`)}
+function emiCalc(){const p=+la.value,r=+li.value/1200,n=+ly.value*12;if(!p||!r||!n)return;const e=p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);show("lR",`Monthly payment: <strong>₹${e.toFixed(2)}</strong><br>Total interest: ₹${(e*n-p).toFixed(2)}<br>Total payment: ₹${(e*n).toFixed(2)}`)}
+function wordCalc(){const t=wt.value,w=t.trim()?t.trim().split(/\s+/).length:0,c=t.length,l=t?t.split("\n").length:0,s=(t.match(/[.!?]+/g)||[]).length,mins=Math.ceil(w/200);show("wR",`Words: <strong>${w}</strong><br>Characters: <strong>${c}</strong><br>Lines: <strong>${l}</strong><br>Sentences: <strong>${s}</strong><br>Reading time: <strong>${mins} min</strong>`)}
+function caseCalc(){const t=ct.value;const title=t.toLowerCase().replace(/\b\w/g,x=>x.toUpperCase()),sentence=t.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g,x=>x.toUpperCase());show("cR",`<div><b>UPPERCASE</b><br>${esc(t.toUpperCase())}</div><br><div><b>lowercase</b><br>${esc(t.toLowerCase())}</div><br><div><b>Title Case</b><br>${esc(title)}</div><br><div><b>Sentence case</b><br>${esc(sentence)}</div><br><button class="btn2" onclick="copy(${JSON.stringify(t.toUpperCase())})">Copy uppercase</button>`)}
+function slugCalc(){const s=slugT.value.toLowerCase().trim().replace(/[^a-z0-9\s-]/g,"").replace(/\s+/g,"-").replace(/-+/g,"-");show("sR",`<strong>${esc(s)}</strong><br><br><button class="btn2" onclick="copy(${JSON.stringify(s)})">Copy slug</button>`)}
+function jsonFmt(){try{show("jR",`<pre>${esc(JSON.stringify(JSON.parse(jt.value),null,2))}</pre><br><button class="btn2" onclick="copy(${JSON.stringify(JSON.stringify(JSON.parse(jt.value),null,2))})">Copy</button>`)}catch(e){show("jR",`<strong>Invalid JSON</strong><br>${esc(e.message)}`)}}
+function jsonMini(){try{const x=JSON.stringify(JSON.parse(jt.value));show("jR",`<pre>${esc(x)}</pre><br><button class="btn2" onclick="copy(${JSON.stringify(x)})">Copy</button>`)}catch(e){show("jR","Invalid JSON")}}
+function b64enc(){try{const x=btoa(unescape(encodeURIComponent(b64.value)));show("bR",`<pre>${esc(x)}</pre><br><button class="btn2" onclick="copy(${JSON.stringify(x)})">Copy</button>`)}catch(e){show("bR","Could not encode")}}
+function b64dec(){try{const x=decodeURIComponent(escape(atob(b64.value)));show("bR",`<pre>${esc(x)}</pre><br><button class="btn2" onclick="copy(${JSON.stringify(x)})">Copy</button>`)}catch(e){show("bR","Invalid Base64")}}
+function urlEnc(){const x=encodeURIComponent(urlT.value);show("uR",`<pre>${esc(x)}</pre><br><button class="btn2" onclick="copy(${JSON.stringify(x)})">Copy</button>`)}
+function urlDec(){try{const x=decodeURIComponent(urlT.value);show("uR",`<pre>${esc(x)}</pre><br><button class="btn2" onclick="copy(${JSON.stringify(x)})">Copy</button>`)}catch(e){show("uR","Invalid encoded URL")}}
+function imageLoad(input,cb){const f=input.files?.[0];if(!f)return toast("Choose an image first");const r=new FileReader();r.onload=e=>{const im=new Image();im.onload=()=>cb(im,f);im.src=e.target.result};r.readAsDataURL(f)}
+function compressImage(){imageLoad(imgC,(im,f)=>{const c=document.createElement("canvas"),max=2200,s=Math.min(1,max/Math.max(im.width,im.height));c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext("2d").drawImage(im,0,0,c.width,c.height);c.toBlob(b=>{const u=URL.createObjectURL(b);show("iR",`Original: ${(f.size/1024).toFixed(1)} KB<br>Compressed: ${(b.size/1024).toFixed(1)} KB<br><br><a class="btn" style="display:block;text-align:center;text-decoration:none" href="${u}" download="toolnest-compressed.jpg">Download compressed image</a>`)},"image/jpeg",+iq.value)})}
+function convertImage(){imageLoad(imgV,(im,f)=>{const c=document.createElement("canvas");c.width=im.width;c.height=im.height;c.getContext("2d").drawImage(im,0,0);c.toBlob(b=>{const u=URL.createObjectURL(b),ext=fmt.value.split("/")[1];const a=document.createElement("a");a.href=u;a.download="toolnest-image."+ext;a.click();show("ivR",`Converted <strong>${esc(f.name)}</strong> to ${ext.toUpperCase()}.`);},""+fmt.value,.92)})}
+function lengthCalc(){const v=+lv.value,units={m:1,km:1000,ft:.3048,mi:1609.344,in:.0254};const x=v*units[lf.value]/units[lt.value];show("lenR",`<strong>${x}</strong> ${lt.value}`)}
+function tempCalc(){const v=+tv.value,f=tf.value,t=tt.value;let c=f==="C"?v:f==="F"?(v-32)*5/9:v-273.15;let x=t==="C"?c:t==="F"?c*9/5+32:c+273.15;show("tempR",`<strong>${x.toFixed(2)}°${t}</strong>`)}
+function passGen(){let chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";if(ps.checked)chars+="!@#$%^&*_-+=?";let n=Math.min(100,Math.max(6,+pl.value||20)),s="";for(let i=0;i<n;i++)s+=chars[Math.floor(Math.random()*chars.length)];show("passR",`<pre>${esc(s)}</pre><button class="btn2" onclick="copy(${JSON.stringify(s)})">Copy password</button>`)}
+function qrGen(){const x=qrT.value.trim();if(!x)return;const src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+encodeURIComponent(x);show("qrR",`<img src="${src}" alt="QR code" style="display:block;width:300px;max-width:100%;margin:auto;border-radius:12px"><br><a class="btn" style="display:block;text-align:center;text-decoration:none" href="${src}" download="toolnest-qr.png" target="_blank">Open / Save QR</a>`)}
+function randomGen(){let a=+rn1.value,b=+rn2.value;if(a>b)[a,b]=[b,a];const x=Math.floor(Math.random()*(b-a+1))+a;show("rnR",`Your number: <strong style="font-size:28px">${x}</strong>`)}
+let swTimer=null,swStartTime=0,swElapsed=0;
+function swRender(){let x=swElapsed;if(swTimer)x=Date.now()-swStartTime;const ms=x%1000,sec=Math.floor(x/1000)%60,min=Math.floor(x/60000);document.getElementById("sw").textContent=String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0")+"."+String(Math.floor(ms/10)).padStart(2,"0")}
+function swStart(){if(swTimer)return;swStartTime=Date.now()-swElapsed;swTimer=setInterval(swRender,30)}
+function swStop(){if(swTimer){swElapsed=Date.now()-swStartTime;clearInterval(swTimer);swTimer=null;swRender()}}
+function swReset(){swStop();swElapsed=0;swRender()}
+
+
+let puzzleBoard=[],puzzleMoves=0,puzzleLocked=false;
+function openGame(type){
+if(type==="numpuz"){openModal("🔢 Number Puzzle","Easy mode — arrange the blocks from 1 to 15.",`<div class="numpuzWrap"><div class="numpuzTop"><div><span class="muted">MOVES</span><strong id="npMoves">0</strong></div><div><span class="muted">BEST</span><strong id="npBest">—</strong></div></div><div id="npBoard" class="numpuzBoard"></div><div class="numpuzActions"><button class="btn2" onclick="shuffleNumpuz()">🔀 New Puzzle</button><button class="btn2" onclick="resetNumpuz()">↺ Reset</button></div><div id="npResult" class="result show">Get 1 → 15 in order.</div></div>`);shuffleNumpuz();return;}
+if(type==="numberRush"){openModal("⚡ Number Rush","Tap 1 → 16 and beat your own time.",`<div class="rushWrap"><div class="numpuzTop"><div><span class="muted">TIME</span><strong id="rushTime">0.0s</strong></div><div><span class="muted">NEXT</span><strong id="rushNext">1</strong></div></div><div id="rushBoard" class="rushBoard"></div><div class="numpuzActions"><button class="btn2" onclick="startNumberRush()">▶ Start</button><button class="btn2" onclick="resetNumberRush()">↺ New Board</button></div><div id="rushResult" class="result show">Tap Start, then 1 → 16.</div></div>`);resetNumberRush();return;}
+if(type==="mathPuzzle"){openMathPuzzle();return;} if(type==="wordSearch"){openWordSearch();return;} if(type==="wordMatch"){openWordMatch();return;}}
+const easyWords=["APPLE","MANGO","TIGER","HOUSE","WATER","PLANT","PHONE","CLOUD","SMILE","BREAD","MUSIC","LIGHT","WORLD","CHAIR","GRAPE","RIVER","BEACH","HAPPY","TRAIN","SPACE"];
+let wsWord="",wsFound=false,wsSelected=[];
+function makeWordGrid(word){
+  const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""); let grid=Array.from({length:36},()=>letters[Math.floor(Math.random()*letters.length)]);
+  const row=Math.floor(Math.random()*6),col=Math.floor(Math.random()*(6-word.length));
+  for(let i=0;i<word.length;i++)grid[row*6+col+i]=word[i];
+  return {grid,row,col};
+}
+function openWordSearch(){
+  wsWord=easyWords[Math.floor(Math.random()*easyWords.length)]; wsFound=false; wsSelected=[];
+  openModal("🔎 Word Search","Find the highlighted target word in the easy 6×6 grid.",`<div class="wordSearchWrap"><div class="wsTarget"><span>Find: <strong id="wsTargetWord">${wsWord}</strong></span><span>⭐ EASY</span></div><div id="wsGrid" class="wsGrid"></div><div class="wsActions"><button class="btn2" onclick="newWordSearch()">🔀 New Word</button><button class="btn2" onclick="clearWordSearch()">↺ Reset</button></div><div id="wsResult" class="result show">Tap the letters in the word from left to right.</div></div>`);
+  newWordSearch();
+}
+function newWordSearch(){
+  wsWord=easyWords[Math.floor(Math.random()*easyWords.length)]; wsFound=false; wsSelected=[];
+  const g=makeWordGrid(wsWord); window.__wsGridData=g;
+  const el=document.getElementById("wsGrid"),target=document.getElementById("wsTargetWord"); if(!el)return;
+  if(target)target.textContent=wsWord;
+  el.innerHTML=g.grid.map((ch,i)=>`<button type="button" class="wsCell" onclick="tapWordSearch(${i})">${ch}</button>`).join("");
+  document.getElementById("wsResult").textContent="Tap the letters in the word from left to right.";
+}
+function tapWordSearch(i){
+  if(wsFound)return; const g=window.__wsGridData, row=Math.floor(i/6),col=i%6;
+  if(row!==g.row || col<g.col || col>=g.col+wsWord.length)return toast("🙂 Try another letter");
+  const expected=g.row*6+g.col+wsSelected.length;
+  if(i!==expected)return toast("👉 Start from the first letter");
+  wsSelected.push(i); const cells=document.querySelectorAll("#wsGrid .wsCell"); cells[i]?.classList.add("selected");
+  if(wsSelected.length===wsWord.length){wsFound=true;wsSelected.forEach(x=>cells[x]?.classList.add("found"));document.getElementById("wsResult").innerHTML="🎉 <strong>Great! You found the word.</strong>";toast("🏆 Nice find!");}
+}
+function clearWordSearch(){wsSelected=[];document.querySelectorAll("#wsGrid .wsCell").forEach(c=>c.classList.remove("selected"));const r=document.getElementById("wsResult");if(r)r.textContent="Try again — start from the first letter."}
+let matchCards=[],matchOpen=[],matchLock=false,matchMoves=0;
+function openWordMatch(){openModal("🧠 Word Match","Tap two cards to find matching word pairs. Easy mode.",`<div class="matchWrap"><div class="gameCount"><span>MOVES <b id="matchMoves">0</b></span><span>PAIRS <b id="matchPairs">0</b>/6</span></div><div id="matchGrid" class="matchGrid"></div><button class="btn2" style="width:100%;margin-top:12px" onclick="newWordMatch()">🔀 New Game</button><div id="matchResult" class="result show">Find all 6 pairs.</div></div>`);newWordMatch()}
+function newWordMatch(){
+  const words=["SUN","MOON","STAR","TREE","BOOK","FISH"]; matchCards=[...words,...words].sort(()=>Math.random()-.5).map((word,id)=>({word,id,open:false,matched:false}));matchOpen=[];matchLock=false;matchMoves=0;renderWordMatch();
+}
+function renderWordMatch(){const el=document.getElementById("matchGrid");if(!el)return;el.innerHTML=matchCards.map((c,i)=>`<button type="button" class="matchCard ${c.open||c.matched?'open':''} ${c.matched?'matched':''}" onclick="tapMatch(${i})">${c.open||c.matched?c.word:'?'}</button>`).join("");const m=document.getElementById("matchMoves"),p=document.getElementById("matchPairs");if(m)m.textContent=matchMoves;if(p)p.textContent=matchCards.filter(c=>c.matched).length/2}
+function tapMatch(i){if(matchLock||matchCards[i].open||matchCards[i].matched)return;matchCards[i].open=true;matchOpen.push(i);renderWordMatch();if(matchOpen.length<2)return;matchMoves++;matchLock=true;const [a,b]=matchOpen;if(matchCards[a].word===matchCards[b].word){matchCards[a].matched=matchCards[b].matched=true;matchOpen=[];matchLock=false;renderWordMatch();if(matchCards.every(c=>c.matched)){document.getElementById("matchResult").innerHTML="🎉 <strong>All pairs matched!</strong>";toast("🏆 Perfect match!")}}else{setTimeout(()=>{matchCards[a].open=matchCards[b].open=false;matchOpen=[];matchLock=false;renderWordMatch()},650)}}
+
+
+let mathRound=0,mathScore=0,mathCorrect=0,mathCurrent=null,mathLocked=false;
+const mathEasy=[
+  [2,"+",3,5],[7,"-",2,5],[4,"+",5,9],[10,"-",4,6],[3,"×",2,6],[12,"÷",3,4],[5,"+",6,11],[9,"-",3,6]
+];
+function openMathPuzzle(){
+  mathRound=0;mathScore=0;mathCorrect=0;mathLocked=false;
+  openModal("➗ Math Puzzle","Easy mode — choose the missing answer. 10 quick rounds.",`<div class="mathGame"><div class="mathScore"><div class="mathStat"><small>ROUND</small><b id="mathRound">0/10</b></div><div class="mathStat"><small>SCORE</small><b id="mathScore">0</b></div><div class="mathStat"><small>RIGHT</small><b id="mathRight">0</b></div></div><div class="mathProgress"><span id="mathProgress"></span></div><div id="mathQuestion" class="mathQuestion"></div><div id="mathChoices" class="mathChoices"></div><div id="mathResult" class="result show">Pick the correct number.</div><div class="mathActions"><button class="btn2" onclick="newMathRound()">🔄 New Round</button><button class="btn2" onclick="showMathHint()">💡 Hint</button></div><div id="mathHint" class="mathHint">Tip: take it one step at a time — all questions are easy.</div></div>`);
+  newMathRound();
+}
+function newMathRound(){
+  if(mathRound>=10){mathRound=0;mathScore=0;mathCorrect=0;}
+  mathRound++;mathLocked=false;
+  const q=mathEasy[Math.floor(Math.random()*mathEasy.length)];
+  mathCurrent={a:q[0],op:q[1],b:q[2],ans:q[3]};
+  const choices=new Set([q[3]]);while(choices.size<3){const d=[-2,-1,1,2][Math.floor(Math.random()*4)];choices.add(Math.max(0,q[3]+d));}
+  const arr=[...choices].sort(()=>Math.random()-.5);
+  const qEl=document.getElementById("mathQuestion");if(qEl)qEl.innerHTML=`<div class="eq">${q[0]} ${q[1]} ${q[2]} = <span class="blank">?</span></div>`;
+  const cEl=document.getElementById("mathChoices");if(cEl)cEl.innerHTML=arr.map(n=>`<button type="button" class="mathChoice" onclick="answerMath(${n},this)">${n}</button>`).join("");
+  updateMathStats();const h=document.getElementById("mathHint");if(h)h.textContent="Tip: tap the answer you think is correct.";
+}
+function answerMath(n,btn){
+  if(mathLocked||!mathCurrent)return;mathLocked=true;
+  const ok=n===mathCurrent.ans;if(ok){mathScore+=10;mathCorrect++;btn.classList.add("correct");document.getElementById("mathResult").innerHTML="🎉 <strong>Correct!</strong> +10 points";toast("✅ Correct!");}else{btn.classList.add("wrong");document.querySelectorAll(".mathChoice").forEach(b=>{if(Number(b.textContent)===mathCurrent.ans)b.classList.add("correct")});document.getElementById("mathResult").innerHTML=`🙂 <strong>Answer: ${mathCurrent.ans}</strong> — keep going!`;}
+  updateMathStats();
+  setTimeout(()=>{if(mathRound>=10){document.getElementById("mathResult").innerHTML=`🏆 <strong>Game complete!</strong> You scored ${mathScore}/100.`;return;}newMathRound()},700);
+}
+function updateMathStats(){const r=document.getElementById("mathRound"),s=document.getElementById("mathScore"),c=document.getElementById("mathRight"),p=document.getElementById("mathProgress");if(r)r.textContent=mathRound+"/10";if(s)s.textContent=mathScore;if(c)c.textContent=mathCorrect;if(p)p.style.width=(mathRound/10*100)+"%";}
+function showMathHint(){const h=document.getElementById("mathHint");if(!h||!mathCurrent)return;const {a,op,b}=mathCurrent;h.textContent=op==="×"?`${a} groups of ${b}.`:op==="÷"?`${a} divided into ${b} equal groups.`:`Think: ${a} ${op} ${b}.`;}
+
+let activeGameMode="all";
+function filterGames(){const q=(document.getElementById("gameSearch")?.value||"").toLowerCase();document.querySelectorAll("#gameGrid .game").forEach(c=>{c.style.display=c.textContent.toLowerCase().includes(q)&&(activeGameMode==="all"||c.dataset.type===activeGameMode)?"block":"none"});updateGameEmpty()}
+function filterGameMode(mode,btn){activeGameMode=mode;document.querySelectorAll(".gameFilter").forEach(b=>b.classList.remove("active"));btn.classList.add("active");filterGames()}
+function updateGameEmpty(){const ok=[...document.querySelectorAll("#gameGrid .game")].some(c=>c.style.display!=="none");document.getElementById("gameEmpty").style.display=ok?"none":"block"}
+let rushNums=[],rushNext=1,rushStart=0,rushTimer=null,rushRunning=false;
+function renderRush(){
+  const b=document.getElementById("rushBoard"); if(!b)return;
+  b.innerHTML=rushNums.map(n=>`<button type="button" class="rushTile ${n<rushNext?"done":""}" onclick="tapRush(${n})">${n}</button>`).join("");
+  const next=document.getElementById("rushNext"); if(next)next.textContent=rushNext<=16?rushNext:"✓";
+}
+function resetNumberRush(){
+  if(rushTimer){clearInterval(rushTimer);rushTimer=null;}
+  rushRunning=false;rushNext=1;rushStart=0;
+  rushNums=Array.from({length:16},(_,i)=>i+1).sort(()=>Math.random()-.5);
+  const t=document.getElementById("rushTime");if(t)t.textContent="0.0s";
+  const r=document.getElementById("rushResult");if(r)r.textContent="Tap Start, then tap 1 → 16.";
+  renderRush();
+}
+function startNumberRush(){
+  resetNumberRush();rushRunning=true;rushStart=performance.now();
+  rushTimer=setInterval(()=>{const t=document.getElementById("rushTime");if(t)t.textContent=((performance.now()-rushStart)/1000).toFixed(1)+"s";},100);
+  const r=document.getElementById("rushResult");if(r)r.textContent="Go! Find 1, then 2, then 3…";
+}
+function tapRush(n){
+  if(!rushRunning||n!==rushNext)return;
+  rushNext++;renderRush();
+  if(rushNext===17){
+    const sec=(performance.now()-rushStart)/1000;clearInterval(rushTimer);rushTimer=null;rushRunning=false;
+    const t=document.getElementById("rushTime");if(t)t.textContent=sec.toFixed(1)+"s";
+    const r=document.getElementById("rushResult");if(r)r.innerHTML=`🎉 <strong>Completed in ${sec.toFixed(1)} seconds!</strong> Try again and beat your time.`;
+    toast("🎉 Number Rush complete!");
+  }
+}
+
+function solvedNumpuz(){for(let i=0;i<15;i++)if(puzzleBoard[i]!==i+1)return false;return puzzleBoard[15]===0}
+function renderNumpuz(){
+  const b=document.getElementById("npBoard");if(!b)return;
+  b.innerHTML=puzzleBoard.map((v,i)=>v===0?`<div class="numpuzEmpty"></div>`:`<button type="button" class="numpuzTile" onclick="tapNumpuz(${i})" aria-label="Move number ${v}">${v}</button>`).join("");
+  const m=document.getElementById("npMoves");if(m)m.textContent=puzzleMoves;
+  const best=localStorage.getItem("toolnest_numpuz_best");const el=document.getElementById("npBest");if(el)el.textContent=best||"—";
+}
+function validPuzzleNeighbors(pos){const r=Math.floor(pos/4),c=pos%4,a=[];if(r>0)a.push(pos-4);if(r<3)a.push(pos+4);if(c>0)a.push(pos-1);if(c<3)a.push(pos+1);return a}
+function shuffleNumpuz(){
+  puzzleLocked=false;puzzleBoard=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];puzzleMoves=0;
+  let blank=15,prev=-1;
+  for(let n=0;n<55;n++){
+    const choices=validPuzzleNeighbors(blank).filter(x=>x!==prev);const pick=choices[Math.floor(Math.random()*choices.length)];
+    [puzzleBoard[blank],puzzleBoard[pick]]=[puzzleBoard[pick],puzzleBoard[blank]];prev=blank;blank=pick;
+  }
+  if(solvedNumpuz())return shuffleNumpuz();
+  renderNumpuz();
+  const r=document.getElementById("npResult");if(r)r.textContent="Easy mode: arrange 1 → 15. You can use arrow keys too.";
+}
+function resetNumpuz(){
+  puzzleLocked=false;puzzleBoard=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];puzzleMoves=0;renderNumpuz();
+  const r=document.getElementById("npResult");if(r)r.textContent="Board reset. Start moving the blocks!";
+}
+function tapNumpuz(i){
+  if(puzzleLocked)return;const blank=puzzleBoard.indexOf(0);if(!validPuzzleNeighbors(blank).includes(i))return;
+  [puzzleBoard[blank],puzzleBoard[i]]=[puzzleBoard[i],puzzleBoard[blank]];puzzleMoves++;renderNumpuz();
+  if(solvedNumpuz()){
+    puzzleLocked=true;const old=Number(localStorage.getItem("toolnest_numpuz_best")||0);if(!old||puzzleMoves<old)localStorage.setItem("toolnest_numpuz_best",String(puzzleMoves));
+    renderNumpuz();const r=document.getElementById("npResult");if(r)r.innerHTML=`🎉 <strong>Puzzle solved in ${puzzleMoves} moves!</strong>`;toast("🎉 Number Puzzle solved!");
+  }
+}
+function handleNumpuzKey(e){
+  const modal=document.getElementById("feedbackModal");
+  if(!document.getElementById("npBoard")||!document.getElementById("modal"))return;
+  if(e.target.matches("input,textarea,select"))return;
+  const blank=puzzleBoard.indexOf(0);let target=-1;
+  if(e.key==="ArrowUp"&&blank<12)target=blank+4;
+  if(e.key==="ArrowDown"&&blank>=4)target=blank-4;
+  if(e.key==="ArrowLeft"&&blank%4<3)target=blank+1;
+  if(e.key==="ArrowRight"&&blank%4>0)target=blank-1;
+  if(target>=0){e.preventDefault();tapNumpuz(target)}
+}
+function openLegal(type){
+const data={
+about:["About ToolNest",`<div class="policy"><p>ToolNest is a free online toolbox created to make common digital tasks easier from one place.</p><h3>Developer</h3><p><b>ALFAIZ ANSARI</b><br>Email: <a href="mailto:alfaiz9833@gmail.com">alfaiz9833@gmail.com</a></p><h3>How it works</h3><p>Many tools run directly in your browser. Some features may use a third-party service when required, such as QR generation.</p></div>`],
+contact:["Contact",`<div class="policy"><p>For questions, feedback, bug reports or business inquiries:</p><p><b>Email:</b> <a href="mailto:alfaiz9833@gmail.com">alfaiz9833@gmail.com</a></p><p><b>Developer:</b> ALFAIZ ANSARI</p></div>`],
+privacy:["Privacy Policy",`<div class="policy"><p><b>Effective date:</b> September 25, 2026</p><p>ToolNest is designed to minimize unnecessary data collection. Most calculator, text, conversion and image-processing tools operate locally in your browser.</p><h3>Information you provide</h3><p>ToolNest does not require an account for normal use. Data entered into local tools is generally processed on your device and is not intentionally stored on a ToolNest server by this static website.</p><h3>Local storage</h3><p>Your theme preference, favorite tools and recent-tool list may be stored in your browser's local storage so the site remembers them on that device.</p><h3>Third-party services</h3><p>Some features may use external services. The QR generator currently requests an image from a third-party QR service. Your QR text/URL is therefore sent to that service when you use that feature. Do not put passwords, payment information or other sensitive information into the QR generator.</p><h3>Analytics, advertising and future changes</h3><p>If analytics, advertising, affiliate links or other third-party services are added later, this policy may be updated to describe them. Check this page for the latest version.</p><h3>Contact</h3><p>Privacy questions: <a href="mailto:alfaiz9833@gmail.com">alfaiz9833@gmail.com</a></p></div>`],
+terms:["Terms of Use",`<div class="policy"><p>By using ToolNest, you agree to use the website lawfully and responsibly.</p><h3>Tool results</h3><p>Tools are provided for convenience and general informational purposes. You are responsible for checking important calculations and results before relying on them.</p><h3>Prohibited use</h3><p>Do not use ToolNest to violate laws, infringe rights, distribute malware, attack systems, or abuse third-party services.</p><h3>Availability</h3><p>ToolNest is provided on an as-available basis. Features may change, be removed or temporarily become unavailable.</p><h3>Intellectual property</h3><p>The ToolNest name, original design and original website content are owned by the developer unless otherwise stated. Third-party libraries and services remain subject to their own licenses and terms.</p><h3>Changes</h3><p>These terms may be updated when the service changes. Continued use after an update means you accept the updated terms.</p></div>`],
+disclaimer:["Disclaimer",`<div class="policy"><p>ToolNest does not provide professional financial, medical, legal, tax or investment advice.</p><p>Calculator outputs are estimates or mathematical results and may not reflect your real-world situation. For decisions involving money, health, law or safety, verify information with an appropriate qualified professional or authoritative source.</p><p>The developer is not responsible for losses or damages arising from reliance on tool results, interruptions, third-party services, or incorrect user input, to the extent permitted by applicable law.</p></div>`],
+cookies:["Cookie & Storage Notice",`<div class="policy"><p>ToolNest's current interface uses browser local storage for preferences such as theme, favorites and recent tools. These are stored on your device.</p><p>The site may use cookies or similar technologies in the future if analytics, advertising or other services are introduced. Any material change will be reflected in the privacy policy.</p></div>`]
+};
+openModal(data[type][0],"ToolNest legal information",data[type][1])
+}
+render();renderFav();
+window.addEventListener("keydown",e=>{handleNumpuzKey(e);if(e.key==="Escape")closeModal();if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();document.getElementById("search").focus()}});
+
+let feedbackRating = 0;
+let feedbackType = "";
+
+function openFeedback(){
+  const modal = document.getElementById("feedbackModal");
+  if(modal) modal.classList.add("show");
+}
+function setFeedbackRating(n){
+  feedbackRating = n;
+  document.querySelectorAll("#feedbackStars button").forEach((b,i)=>{
+    b.classList.toggle("active", i < n);
+  });
+}
+function setFeedbackType(type){
+  feedbackType = type;
+  document.querySelectorAll(".feedbackChoices button").forEach(b=>{
+    b.classList.toggle("active", b.textContent.includes(type));
+  });
+}
+function submitFeedback(){
+  const text = document.getElementById("feedbackText").value.trim();
+  const email = document.getElementById("feedbackEmail").value.trim();
+
+  if(!feedbackRating && !feedbackType && !text){
+    toast("Please add a rating or feedback first.");
+    return;
+  }
+
+  const item = {
+    rating: feedbackRating,
+    type: feedbackType,
+    message: text,
+    email: email,
+    time: new Date().toISOString()
+  };
+
+  const old = JSON.parse(localStorage.getItem("toolnest_feedback") || "[]");
+  old.push(item);
+  localStorage.setItem("toolnest_feedback", JSON.stringify(old));
+
+  document.getElementById("feedbackThanks").style.display = "block";
+  document.getElementById("feedbackText").style.display = "none";
+  document.getElementById("feedbackEmail").style.display = "none";
+  document.querySelector(".feedbackSubmit").style.display = "none";
+  document.querySelector(".feedbackStars").style.display = "none";
+  document.querySelector(".feedbackChoices").style.display = "none";
+  toast("Thanks for your feedback! ❤️");
+}
+
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&document.getElementById("wsInput")===document.activeElement)checkScramble();if(e.key==="Enter"&&document.getElementById("wgInput")===document.activeElement)checkWordGuess();});
+document.addEventListener("keydown",handleNumpuzKey);
+</script>
+
+<button class="feedbackFloat" onclick="openFeedback()" aria-label="Give feedback">
+  <span>💬</span> Feedback
+</button>
+
+
+<div class="modal" id="feedbackModal">
+  <div class="modalBox feedbackBox">
+    <button class="close" onclick="closeModal()">×</button>
+    <div class="modalIcon">💬</div>
+    <h2>Share Your Feedback</h2>
+    <p class="muted">Help us make ToolNest better.</p>
+
+    <div class="feedbackStars" id="feedbackStars">
+      <button type="button" onclick="setFeedbackRating(1)">★</button>
+      <button type="button" onclick="setFeedbackRating(2)">★</button>
+      <button type="button" onclick="setFeedbackRating(3)">★</button>
+      <button type="button" onclick="setFeedbackRating(4)">★</button>
+      <button type="button" onclick="setFeedbackRating(5)">★</button>
+    </div>
+
+    <div class="feedbackChoices">
+      <button type="button" onclick="setFeedbackType('Excellent')">😍 Excellent</button>
+      <button type="button" onclick="setFeedbackType('Good')">😊 Good</button>
+      <button type="button" onclick="setFeedbackType('Okay')">🙂 Okay</button>
+      <button type="button" onclick="setFeedbackType('Improve')">🛠️ Needs Improvement</button>
+    </div>
+
+    <textarea id="feedbackText" class="feedbackText" rows="5"
+      placeholder="Tell us what you liked or what we should improve..."></textarea>
+
+    <input id="feedbackEmail" class="feedbackInput" type="email"
+      placeholder="Email (optional)">
+
+    <button class="primaryBtn feedbackSubmit" onclick="submitFeedback()">
+      Send Feedback 🚀
+    </button>
+
+    <div id="feedbackThanks" class="feedbackThanks" style="display:none;">
+      <div class="thanksIcon">✅</div>
+      <h3>Thank you!</h3>
+      <p>Your feedback has been saved on this device.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
