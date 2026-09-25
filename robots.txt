@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alfaiz8291gmailcom-boop.github.io/ToolNest/sitemap.xml
